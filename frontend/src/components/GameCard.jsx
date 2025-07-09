@@ -1,13 +1,37 @@
 // src/components/GameCard.jsx
+import './GameCard.css';
 
 function GameCard({ game }) {
   return (
     <div className="game-card">
-      <img src={game.cover} alt={game.title} className="game-card__cover" />
-      <h3 className="game-card__title">{game.title}</h3>
-      <p className="game-card__genre">{game.genre}</p>
+      <div className="game-card__header">
+        <img
+          src={game.cover}
+          alt={game.title}
+          className="game-card__cover"
+          onError={e => { e.target.src = '/default-cover.png'; }}
+        />
+        <div className="game-card__info">
+          <h3 className="game-card__title">{game.title}</h3>
+          <div className="game-card__meta">
+            <span className="game-card__year">{game.year}</span>
+            <span className="game-card__rating">⭐ {game.rating}</span>
+          </div>
+          <p className="game-card__genre">{game.genre}</p>
+        </div>
+      </div>
       <p className="game-card__description">{game.description}</p>
-      <p className="game-card__author">Desenvolvedor: {game.author}</p>
+      <p className="game-card__author"><strong>Desenvolvedor:</strong> {game.author}</p>
+      {game.link && (
+        <a
+          href={game.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="game-card__play-btn"
+        >
+          Jogar / Ver mais
+        </a>
+      )}
     </div>
   );
 }

@@ -1,18 +1,20 @@
 // src/components/Navbar.jsx
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
+import "./Navbar.css";
 
 function Navbar() {
   return (
-    <nav>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/catalog">Catálogo</Link></li>
-        <li><Link to="/submit">Adicionar Jogo</Link></li>
-        <li><Link to="/profile">Perfil</Link></li>
-        <li><Link to="/login">Login</Link></li>
-        <li><Link to="/register">Registrar</Link></li>
-      </ul>
+    <nav className="navbar">
+      <div className="navbar-left">
+        <NavLink className="navbar-logo" to="/">indieHub</NavLink>
+        <NavLink className="navbar-link" to="/catalog">Catálogo</NavLink>
+        <NavLink className="navbar-link" to="/submit">Adicionar Jogo</NavLink>
+        <NavLink className="navbar-link" to="/profile">Perfil</NavLink>
+      </div>
+      <div className="navbar-right">
+        <NavLink to="/login" className="navbar-btn">Entrar</NavLink>
+        <NavLink to="/register" className="navbar-btn navbar-btn-register">Cadastrar</NavLink>
+      </div>
     </nav>
   );
 }
