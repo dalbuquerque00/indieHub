@@ -2,10 +2,9 @@
 .profile-container {
   min-height: 100vh;
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  padding-top: 60px;
-  background: #23242a;
 }
 
 .profile-card {
@@ -62,10 +61,11 @@
   gap: 8px;
 }
 .profile-name {
-  font-size: 1.6rem;
+  font-size: 1.0rem;
   font-weight: 700;
   color: #fff;
   margin: 0;
+  font-family: 'Press Start 2P', 'Courier New', Courier, monospace;
 }
 .edit-icon {
   cursor: pointer;
@@ -219,5 +219,104 @@
   .profile-modal {
     min-width: 96vw;
     padding: 1.1rem 0.3rem;
+  }
+}
+
+/* Favoritos do Perfil */
+.profile-favorites-section {
+  background: rgba(36, 36, 70, 0.96);
+  border-radius: 14px;
+  margin: 36px auto 0 auto;
+  padding: 22px 22px 18px 22px;
+  max-width: 660px;
+  box-shadow: 0 3px 20px #0003;
+  text-align: left;
+}
+
+.profile-favorites-section h3 {
+  color: #ffe359;
+  font-size: 1.20rem;
+  margin-bottom: 1.1rem;
+  font-family: inherit;
+}
+
+.profile-favorites-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 10px;
+  justify-content: flex-start;
+}
+
+.profile-favorite-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #22232d;
+  border-radius: 13px;
+  box-shadow: 0 2px 10px #0002;
+  text-decoration: none;
+  color: #fff;
+  min-width: 122px;
+  max-width: 160px;
+  padding: 15px 10px 11px 10px;
+  transition: transform 0.13s, box-shadow 0.18s, background 0.14s;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+.profile-favorite-card:hover, .profile-favorite-card:focus {
+  background: #292942;
+  border: 2px solid #ffe359;
+  transform: translateY(-2px) scale(1.045);
+  box-shadow: 0 6px 18px #ffe35933;
+  color: #ffe359;
+}
+
+.profile-favorite-img {
+  width: 88px;
+  height: 88px;
+  object-fit: cover;
+  border-radius: 9px;
+  margin-bottom: 10px;
+  border: 1.5px solid #49e4fa44;
+  box-shadow: 0 1px 6px #0003;
+  background: #1a1a24;
+}
+
+.profile-favorite-title {
+  font-size: 1.03rem;
+  font-weight: 600;
+  color: #ffe359;
+  text-align: center;
+  margin-top: 3px;
+  margin-bottom: 1px;
+  word-break: break-word;
+  font-family: 'Press Start 2P', 'Courier New', Courier, monospace;
+}
+
+.profile-no-favorites {
+  color: #98a0b3;
+  font-size: 1.07rem;
+  margin-top: 14px;
+  text-align: center;
+  font-style: italic;
+}
+
+@media (max-width: 650px) {
+  .profile-favorites-section {
+    max-width: 97vw;
+    padding: 10px 2vw 10px 2vw;
+  }
+  .profile-favorites-list {
+    gap: 10px;
+  }
+  .profile-favorite-card {
+    min-width: 88px;
+    max-width: 110px;
+    padding: 7px 4px 8px 4px;
+  }
+  .profile-favorite-img {
+    width: 60px;
+    height: 60px;
   }
 }

@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { FiEdit2 } from "react-icons/fi";
 import "./Profile.css";
+import mockGames from "../data/mockGames";
 
 const GENRES = [
   "Ação", "Puzzle", "Plataforma", "Metroidvania", "Roguelike", "RPG", "Horror", "Simulação", "Aventura"
@@ -12,7 +13,6 @@ function Profile() {
     avatar: "https://i.pravatar.cc/150?img=13",
     name: "Danilo Morais",
     bio: "Amante de jogos indies e desenvolvedor nas horas vagas.",
-    email: "danilo@email.com",
     joined: "2024-07-01",
     favGenres: ["Puzzle", "Aventura", "Plataforma"],
   });
@@ -24,6 +24,8 @@ function Profile() {
     genres: user.favGenres.join(", "),
   });
   const [preview, setPreview] = useState(null);
+
+  const [favorites, setFavorites] = useState([]);
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -49,6 +51,8 @@ function Profile() {
       // depois conectar com backend pra salvar
     }
   }
+
+  const favoriteGames = mockGames.filter(game => favorites.includes(game.id));
 
   return (
     <div className="profile-container">
@@ -145,6 +149,22 @@ function Profile() {
           </div>
         </div>
       )}
+
+      <div className="profile-favorites-section">
+        <h3>Favoritos</h3>
+        {favoriteGames.length === 0 ? (
+          <div className="profile-no-favorites">Você ainda não favoritou nenhum jogo.</div>
+        ) : (
+          <div className="profile-favorites-list">
+            {favoriteGames.map(game => (
+              <a key={game.id} href={`/game/${game.id}`} className="profile-favorite-card">
+                <img src={game.cover} alt={game.title} className="profile-favorite-img" />
+                <div className="profile-favorite-title">{game.title}</div>
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
